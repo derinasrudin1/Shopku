@@ -36,6 +36,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         CartItem item = cartItemList.get(position);
 
+        // Set item data
         holder.productName.setText(item.getName());
         holder.productDetails.setText(item.getDetails());
         holder.productPrice.setText(formatCurrency(item.getPrice()));
@@ -43,32 +44,34 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.checkbox.setChecked(item.isSelected());
         holder.productImage.setImageResource(item.getImageResource());
 
-        // Handle checkbox changes
+        // Checkbox listener
         holder.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             item.setSelected(isChecked);
             if (onItemCheckedChangeListener != null) {
-                onItemCheckedChangeListener.onCheckedChange(item); // Notify activity
+                onItemCheckedChangeListener.onCheckedChange(item);
             }
         });
 
-        // Handle increase button
+        // Increase button listener
         holder.btnIncrease.setOnClickListener(v -> {
             item.setQuantity(item.getQuantity() + 1);
             notifyItemChanged(position);
-            if (onItemCheckedChangeListener != null) {
-                onItemCheckedChangeListener.onCheckedChange(item); // Update total price in activity
-            }
+            notifyTotalPriceUpdate(item);
         });
 
-        // Handle decrease button
+        // Decrease button listener
         holder.btnDecrease.setOnClickListener(v -> {
             if (item.getQuantity() > 1) {
+                // Reduce quantity
                 item.setQuantity(item.getQuantity() - 1);
                 notifyItemChanged(position);
-                if (onItemCheckedChangeListener != null) {
-                    onItemCheckedChangeListener.onCheckedChange(item); // Update total price in activity
-                }
+            } else {
+                // Remove item if quantity reaches 0
+                cartItemList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, cartItemList.size());
             }
+            notifyTotalPriceUpdate(item);
         });
     }
 
@@ -80,6 +83,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     // Format currency
     private String formatCurrency(int amount) {
         return String.format("Rp %,d", amount).replace(',', '.');
+    }
+
+    // Notify total price update to activity
+    private void notifyTotalPriceUpdate(CartItem item) {
+        if (onItemCheckedChangeListener != null) {
+            onItemCheckedChangeListener.onCheckedChange(item);
+        }
     }
 
     // Interface for notifying activity about checkbox changes

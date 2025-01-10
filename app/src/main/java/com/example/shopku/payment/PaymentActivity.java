@@ -1,7 +1,10 @@
 package com.example.shopku.payment;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +14,7 @@ import com.example.shopku.utils.PopupUtil;
 
 public class PaymentActivity extends AppCompatActivity {
     private TextView subTotal, totalPayment , tvOngkir, tvDiskon;
-    private Button btnAddOrder;
+    private Button btnAddOrder,btnDebit, btnCod, btnApplePay;
     private int ongkir = 15000; // Ongkir default (contoh)
     private int voucherDiskon = 10000; // Voucher diskon default (contoh)
 
@@ -27,6 +30,9 @@ public class PaymentActivity extends AppCompatActivity {
         tvOngkir = findViewById(R.id.ongkir);
         tvDiskon = findViewById(R.id.diskon);
         btnAddOrder = findViewById(R.id.btnAddOrder);
+        btnDebit = findViewById(R.id.btnDebit);
+        btnCod = findViewById(R.id.btnCod);
+        btnApplePay = findViewById(R.id.btnApplePay);
 
 
         // Ambil nilai subtotal dari Intent
@@ -49,9 +55,41 @@ public class PaymentActivity extends AppCompatActivity {
         // Tampilkan total payment
         totalPayment.setText(formatCurrency(totalPaymentValue));
 
+        View.OnClickListener paymentMethodListener = view -> {
+            // Reset warna semua tombol
+            resetButtonColors();
+
+            // Ubah warna tombol yang diklik
+            Button clickedButton = (Button) view;
+            clickedButton.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
+            clickedButton.setTextColor(Color.WHITE);
+
+            // Tampilkan Toast
+            String paymentMethod = clickedButton.getText().toString();
+            Toast.makeText(PaymentActivity.this, "Anda memilih: " + paymentMethod, Toast.LENGTH_SHORT).show();
+        };
+
+        // Pasang listener ke setiap tombol
+        btnDebit.setOnClickListener(paymentMethodListener);
+        btnCod.setOnClickListener(paymentMethodListener);
+        btnApplePay.setOnClickListener(paymentMethodListener);
+
+        // Tombol tambah pesanan
         btnAddOrder.setOnClickListener(v ->
                 PopupUtil.showPopup(PaymentActivity.this, "Pesanan Berhasil!")
         );
+    }
+
+    // Reset warna tombol ke default
+    private void resetButtonColors() {
+        btnDebit.setBackgroundTintList(getResources().getColorStateList(R.color.white));
+        btnDebit.setTextColor(getResources().getColor(R.color.black));
+
+        btnCod.setBackgroundTintList(getResources().getColorStateList(R.color.white));
+        btnCod.setTextColor(getResources().getColor(R.color.black));
+
+        btnApplePay.setBackgroundTintList(getResources().getColorStateList(R.color.white));
+        btnApplePay.setTextColor(getResources().getColor(R.color.black));
     }
 
     // Format mata uang ke "Rp xxx.xxx"
