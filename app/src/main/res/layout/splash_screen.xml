@@ -10,6 +10,11 @@
         android:id="@+id/logo"
         android:layout_width="245dp"
         android:layout_height="228dp"
-        android:src="@drawable/logoku"
+        android:src="@drawable/logoshopku"
         android:contentDescription="@string/app_name" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="by Deri Nasrudin 411222045"
+        android:textColor="@color/white"/>
 </LinearLayout>

@@ -37,8 +37,8 @@ public class AccountActivity extends AppCompatActivity {
         AccountOptionsAdapter adapter = new AccountOptionsAdapter(options, this, position -> {
             switch (position) {
                 case 0: // Profil
-                    Toast.makeText(this, "Profil clicked", Toast.LENGTH_SHORT).show();
-                    // startActivity(new Intent(this, ProfileActivity.class));
+                    Intent intent = new Intent(AccountActivity.this, Profil.class);
+                    startActivity(intent);
                     break;
                 case 1: // Pesanan Saya
                     Toast.makeText(this, "Pesanan Saya clicked", Toast.LENGTH_SHORT).show();

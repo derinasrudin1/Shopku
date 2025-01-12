@@ -104,5 +104,4 @@ public class LoginActivity extends AppCompatActivity {
 
 }
 
-//              deri@deri.com
-//              deri123
+

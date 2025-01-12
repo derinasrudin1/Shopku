@@ -65,15 +65,15 @@ public class RegisterActivity extends AppCompatActivity {
                     PopupUtil.showPopup(RegisterActivity.this, "Login Berhasil!"); // Memanggil popup utilitas
                     new Handler().postDelayed(() -> {
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                        startActivity(intent);
+                        finish();
                     }, 2000); // Durasi 2 detik
 
                 } else {
                     Toast.makeText(RegisterActivity.this, "Registrasi gagal. Email mungkin sudah terdaftar.", Toast.LENGTH_SHORT).show();
                 }
             }
-    });
+        });
     }}
 
 //    private void togglePasswordVisibility(EditText editText, ImageView toggleView) {
@@ -86,5 +86,3 @@ public class RegisterActivity extends AppCompatActivity {
 //        }
 //        editText.setSelection(editText.length());
 //    }
-
-

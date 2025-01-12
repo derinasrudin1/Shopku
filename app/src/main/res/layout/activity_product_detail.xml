@@ -1,5 +1,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -41,6 +42,7 @@
         android:layout_marginTop="8dp"
         android:text="Rp 0"
         android:textSize="16sp" />
+
     <!-- Rate Produk -->
     <TextView
         android:id="@+id/productRateTextView"
@@ -50,6 +52,27 @@
         android:text="4.6/5"
         android:textSize="16sp" />
 
+    <!-- Toko Produk -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageToko"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/namaToko"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nama"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <!-- Deskripsi Produk -->
     <TextView
@@ -57,30 +80,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:padding="8dp"
         android:text="Deskripsi Produk"
         android:textSize="14sp" />
 
-    <!-- Tombol Aksi -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="bottom"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:gravity="bottom">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:orientation="horizontal">
+            <!-- Tombol Aksi -->
 
             <Button
                 android:id="@+id/btnAddToCart"
                 android:layout_width="wrap_content"
-                android:backgroundTint="@color/blue"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/blue"
                 android:text="Tambah ke Keranjang" />
 
         </LinearLayout>

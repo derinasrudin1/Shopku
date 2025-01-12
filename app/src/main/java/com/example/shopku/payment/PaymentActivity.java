@@ -17,6 +17,11 @@ public class PaymentActivity extends AppCompatActivity {
     private Button btnAddOrder,btnDebit, btnCod, btnApplePay;
     private int ongkir = 15000; // Ongkir default (contoh)
     private int voucherDiskon = 10000; // Voucher diskon default (contoh)
+    private TextView tvSaldo; // TextView untuk saldo
+    private int saldoDebit = 100000; // Contoh saldo Debit
+    private int saldoApplePay = 50000; // Contoh saldo Apple Pay
+    private String selectedPaymentMethod = ""; // Variabel untuk metode pembayaran yang dipilih
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,8 @@ public class PaymentActivity extends AppCompatActivity {
         btnDebit = findViewById(R.id.btnDebit);
         btnCod = findViewById(R.id.btnCod);
         btnApplePay = findViewById(R.id.btnApplePay);
+        tvSaldo = findViewById(R.id.SaldoTv);
+
 
 
         // Ambil nilai subtotal dari Intent
@@ -64,20 +71,70 @@ public class PaymentActivity extends AppCompatActivity {
             clickedButton.setBackgroundTintList(getResources().getColorStateList(R.color.blue));
             clickedButton.setTextColor(Color.WHITE);
 
-            // Tampilkan Toast
-            String paymentMethod = clickedButton.getText().toString();
-            Toast.makeText(PaymentActivity.this, "Anda memilih: " + paymentMethod, Toast.LENGTH_SHORT).show();
+            // Simpan metode pembayaran yang dipilih
+            selectedPaymentMethod = clickedButton.getText().toString();
+
+            // Perbarui saldo berdasarkan metode pembayaran yang dipilih
+            switch (selectedPaymentMethod) {
+                case "Debit":
+                    tvSaldo.setText(formatCurrency(saldoDebit));
+                    break;
+                case "Apple Pay":
+                    tvSaldo.setText(formatCurrency(saldoApplePay));
+                    break;
+                case "COD":
+                    tvSaldo.setText("Bayar di Tempat");
+                    break;
+                default:
+                    tvSaldo.setText(""); // Kosongkan jika metode lain
+                    break;
+            }
+
+            // Tampilkan Toast untuk metode pembayaran
+            Toast.makeText(PaymentActivity.this, "Anda memilih: " + selectedPaymentMethod, Toast.LENGTH_SHORT).show();
         };
+
+
 
         // Pasang listener ke setiap tombol
         btnDebit.setOnClickListener(paymentMethodListener);
         btnCod.setOnClickListener(paymentMethodListener);
         btnApplePay.setOnClickListener(paymentMethodListener);
 
-        // Tombol tambah pesanan
-        btnAddOrder.setOnClickListener(v ->
-                PopupUtil.showPopup(PaymentActivity.this, "Pesanan Berhasil!")
-        );
+
+        btnAddOrder.setOnClickListener(v -> {
+            switch (selectedPaymentMethod) {
+                case "Debit":
+                    if (saldoDebit >= totalPaymentValue) {
+                        PopupUtil.showPopup(PaymentActivity.this, "Pesanan Berhasil!");
+                    } else {
+                        Toast.makeText(PaymentActivity.this,
+                                "Gagal menambahkan pesanan. Saldo Debit tidak mencukupi!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "Apple Pay":
+                    if (saldoApplePay >= totalPaymentValue) {
+                        PopupUtil.showPopup(PaymentActivity.this, "Pesanan Berhasil!");
+                    } else {
+                        Toast.makeText(PaymentActivity.this,
+                                "Gagal menambahkan pesanan. Saldo Apple Pay tidak mencukupi!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case "COD":
+                    // Untuk COD, selalu berhasil
+                    PopupUtil.showPopup(PaymentActivity.this, "Pesanan Berhasil!");
+                    break;
+                default:
+                    Toast.makeText(PaymentActivity.this,
+                            "Pilih metode pembayaran terlebih dahulu!",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        });
+
+
     }
 
     // Reset warna tombol ke default

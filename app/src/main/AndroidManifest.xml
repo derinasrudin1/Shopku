@@ -7,7 +7,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="411222045_DERI NASRUDIN"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopku"
@@ -30,6 +30,7 @@
         <activity
             android:name=".profil.AccountActivity"
             android:exported="false" />
+        <activity android:name=".profil.Profil"/>
         <activity
             android:name=".cart.CartActivity"
             android:exported="false" />
@@ -37,6 +38,7 @@
             android:name=".payment.PaymentActivity"
             android:exported="false" />
         <activity android:name=".message.Pesan" />
+        <activity android:name=".product.katpakaian.KatPakaian"/>
     </application>
 
 </manifest>

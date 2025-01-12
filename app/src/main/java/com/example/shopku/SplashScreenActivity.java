@@ -17,7 +17,6 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         // Atur layout splash screen
         setContentView(R.layout.splash_screen);
-        checkLoginStatus();
         // Timer untuk splash screen
         new Handler().postDelayed(() -> {
             // Pindah ke MainActivity setelah 3 detik
@@ -27,31 +26,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         }, 1000); // Durasi 3 detik
     }
 
-        private void checkLoginStatus() {
-            SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
 
-            boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
-            long lastLoginTime = sharedPreferences.getLong("lastLoginTime", 0);
-
-            // Hitung durasi sejak login terakhir
-            long currentTime = System.currentTimeMillis();
-            long duration = currentTime - lastLoginTime;
-
-            // 2 jam dalam milidetik: 2 * 60 * 60 * 1000
-            if (isLoggedIn && duration <= 2 * 60 * 60 * 1000) {
-                // Pengguna masih login, lanjut ke halaman utama
-                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
-            } else {
-                // Durasi login habis, minta login ulang
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("isLoggedIn", false); // Reset login status
-                editor.apply();
-
-                startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
-            }
-
-            finish(); // Tutup layar splash atau activity ini
-        }
 
 
     }

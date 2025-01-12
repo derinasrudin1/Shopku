@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shopku.R;
+import com.example.shopku.cart.CartActivity;
 import com.example.shopku.payment.PaymentActivity;
 
 import org.json.JSONArray;
@@ -19,8 +20,8 @@ import org.json.JSONObject;
 
 public class ProductDetail extends AppCompatActivity {
 
-    private ImageView imgProduct;
-    private TextView tvProductName, tvProductPrice, tvProductRate, tvProductDescription;
+    private ImageView imgProduct,imageToko;
+    private TextView tvProductName, tvProductPrice, tvProductRate, tvProductDescription,namaToko;
     private Button btnAddToCart, btnBuyNow;
 
     @Override
@@ -35,6 +36,8 @@ public class ProductDetail extends AppCompatActivity {
         tvProductRate = findViewById(R.id.productRateTextView);
         tvProductDescription = findViewById(R.id.productDescriptionTextView);
         btnAddToCart = findViewById(R.id.btnAddToCart);
+        imageToko= findViewById(R.id.imageToko);
+        namaToko= findViewById(R.id.namaToko);
 
         // Tangkap data dari Intent
         Intent intent = getIntent();
@@ -43,18 +46,21 @@ public class ProductDetail extends AppCompatActivity {
         String productRate = intent.getStringExtra("PRODUCT_RATE");
         int productImage = intent.getIntExtra("PRODUCT_IMAGE", R.drawable.kamera);
         String productDescription = intent.getStringExtra("PRODUCT_DESCRIPTION");
+        int tokoImage = intent.getIntExtra("IMAGE_TOKO",R.drawable.picisku);
+        String tokoName = intent.getStringExtra("NAMA_TOKO");
 
         // Set data ke Views
         tvProductName.setText(productName);
         tvProductPrice.setText(productPrice);
         tvProductRate.setText(productRate);
         imgProduct.setImageResource(productImage);
-
         if (productDescription != null) {
             tvProductDescription.setText(productDescription);
         } else {
             tvProductDescription.setText("Deskripsi produk belum tersedia.");
         }
+        imageToko.setImageResource(tokoImage);
+        namaToko.setText(tokoName);
 
         // Listener tombol Tambah ke Keranjang
         btnAddToCart.setOnClickListener(v -> {
@@ -73,6 +79,8 @@ public class ProductDetail extends AppCompatActivity {
     private void addToCart(String productName, int productImage, String productPrice) {
     // Simulasi penambahan produk ke keranjang
     Toast.makeText(this, productName + " berhasil ditambahkan ke keranjang!", Toast.LENGTH_SHORT).show();
+    Intent intent = new Intent(ProductDetail.this, CartActivity.class);
+    startActivity(intent);
 
     // Ambil SharedPreferences
     SharedPreferences sharedPreferences = getSharedPreferences("CartPreferences", MODE_PRIVATE);

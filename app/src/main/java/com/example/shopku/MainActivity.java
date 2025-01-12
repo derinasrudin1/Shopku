@@ -15,13 +15,14 @@ import com.example.shopku.message.Pesan;
 import com.example.shopku.product.Product;
 import com.example.shopku.product.ProductAdapter;
 import com.example.shopku.product.ProductDetail;
+import com.example.shopku.product.katpakaian.KatPakaian;
 import com.example.shopku.profil.AccountActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView ivPesan;
+    ImageView ivPesan,katPakaian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AccountActivity.class));
             }
         });
+        //Intent ke Kategori Pakaian
+        katPakaian = findViewById(R.id.imageView8);
+        katPakaian.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, KatPakaian.class);
+            startActivity(intent);
+        });
 
         // Intent untuk berpindah ke Pesan
         ivPesan = findViewById(R.id.ivPesan);
@@ -76,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 "Kipas Leher Portabel",
                 "Rp 42.120",
                 "⭐4.8/5.0",
+                R.drawable.picisku,
+                "isku.official",
                 "Kipas leher portabel yang ringan dan mudah digunakan, dirancang khusus untuk memberikan kesegaran saat Anda bepergian. Dengan desain yang stylish, kipas ini dilengkapi dengan tiga mode kecepatan yang dapat disesuaikan. Cocok untuk aktivitas luar ruangan, olahraga, atau bahkan bersantai di rumah."
         ));
 
@@ -84,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 "Refurbished Echo Dot",
                 "Rp 37.400",
                 "⭐4.8/5.0",
+                R.drawable.picgoto,
+                "goto.official",
                 "Echo Dot Refurbished ini merupakan perangkat cerdas dengan fitur Alexa, memberikan Anda kemudahan untuk mengontrol musik, perangkat pintar, dan mendapatkan informasi hanya dengan suara. Perangkat ini telah melalui uji kualitas ketat dan hadir seperti baru, namun dengan harga yang jauh lebih terjangkau."
         ));
 
@@ -92,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 "Ring Stick Up Cam Battery HD",
                 "Rp 131.012",
                 "⭐4.1/5.0",
+                R.drawable.picgoto,
+                "goto.official",
                 "Kamera keamanan serbaguna yang dapat ditempatkan di mana saja, baik di dalam maupun luar ruangan. Dengan kualitas video HD dan deteksi gerakan canggih, Anda dapat memantau rumah Anda secara real-time melalui aplikasi. Dilengkapi baterai tahan lama dan mudah diisi ulang untuk kenyamanan ekstra."
         ));
 
@@ -100,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 "Women's Swing Tunic Notch Collar",
                 "Rp 46.000",
                 "⭐4.1/5.0",
+                R.drawable.picgoto,
+                "goto.official",
                 "Tunik wanita elegan dengan desain kerah notch yang memberikan sentuhan klasik namun modern. Terbuat dari bahan berkualitas tinggi yang lembut di kulit, pakaian ini sangat cocok untuk acara santai maupun semi-formal. Warna merah yang mencolok akan menambah kepercayaan diri Anda."
         ));
 
@@ -108,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 "Yoga Dress Pants untuk Wanita",
                 "Rp 72.400",
                 "⭐4.1/5.0",
+                R.drawable.picisku,
+                "isku.official",
                 "Celana yoga wanita yang menggabungkan kenyamanan olahraga dengan gaya profesional. Dirancang untuk memberikan fleksibilitas maksimal, celana ini cocok digunakan di studio yoga maupun di tempat kerja. Dengan bahan elastis dan potongan ramping, Anda akan merasa nyaman sepanjang hari."
         ));
 
@@ -116,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 "Adidas Women's Grand Court",
                 "Rp 264.600",
                 "⭐4.1/5.0",
+                R.drawable.picisku,
+                "isku.official",
                 "Sepatu Adidas Grand Court untuk wanita ini menggabungkan kenyamanan, gaya, dan daya tahan. Dengan desain klasik yang terinspirasi dari sepatu tenis, sepatu ini cocok untuk aktivitas sehari-hari maupun acara kasual. Sol yang empuk memberikan dukungan optimal untuk kaki Anda sepanjang hari."
         ));
 

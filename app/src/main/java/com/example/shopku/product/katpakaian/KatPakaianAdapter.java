@@ -1,4 +1,4 @@
-package com.example.shopku.product;
+package com.example.shopku.product.katpakaian;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,34 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shopku.R;
+import com.example.shopku.product.Product;
+import com.example.shopku.product.ProductDetail;
+
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-
-    private Context context;
+public class KatPakaianAdapter extends RecyclerView.Adapter<KatPakaianAdapter.ViewHolder> {
     private List<Product> productList;
+    private Context context;
 
-    public ProductAdapter(Context context, List<Product> productList) {
-        this.context = context;
+    public KatPakaianAdapter(List<Product> productList, Context context) {
         this.productList = productList;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.product_item, parent, false);
-        return new ProductViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.product_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = productList.get(position);
-        holder.imgProduct.setImageResource(product.getImageResId());
+
         holder.tvProductName.setText(product.getName());
         holder.tvProductPrice.setText(product.getPrice());
+        holder.imgProduct.setImageResource(product.getImageResId());
         holder.tvProductRate.setText(product.getRate());
-
         // Tambahkan klik listener untuk item
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductDetail.class);
@@ -50,6 +51,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             intent.putExtra("PRODUCT_DESCRIPTION", product.getDescription());
             intent.putExtra("IMAGE_TOKO", product.getImageToko());
             intent.putExtra("NAMA_TOKO", product.getNamaToko());
+
             context.startActivity(intent);
         });
     }
@@ -59,11 +61,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return productList.size();
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView tvProductName, tvProductPrice, tvProductRate;
 
-        public ProductViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgProduct = itemView.findViewById(R.id.imgProduct);
             tvProductName = itemView.findViewById(R.id.tvProductName);
@@ -72,3 +74,4 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
     }
 }
+

@@ -31,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+        db.execSQL("ALTER TABLE " + TABLE_USERS);
         onCreate(db);
     }
 
@@ -47,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Berhasil jika hasil tidak -1
     }
 
+
     // Periksa apakah email dan password cocok
     public boolean checkUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -58,4 +59,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return exists;
     }
+
 }
