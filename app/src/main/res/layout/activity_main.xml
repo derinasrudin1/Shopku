@@ -80,7 +80,7 @@
                 android:background="@drawable/edittext_backgroud"
                 android:ems="10"
                 android:hint="Cari Produk"
-
+                android:textColor="@color/black"
                 android:inputType="text"
                 android:paddingLeft="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -144,6 +144,7 @@
                 android:layout_height="wrap_content"
                 android:text="Pakaian"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.097"
@@ -156,6 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Permainan"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -169,6 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Olahraga"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -182,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rumah"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -293,6 +297,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Keranjang"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -313,7 +318,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profil"
+                android:text="Akun"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

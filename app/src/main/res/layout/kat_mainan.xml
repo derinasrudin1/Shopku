@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Pakaian"
+            android:text="Permainan"
             android:textColor="@color/black"
             android:gravity="center"
             android:textSize="20sp"
@@ -30,7 +30,7 @@
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerKatPakaian"
+        android:id="@+id/recyclerKatMainan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

@@ -1,113 +1,118 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/white"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Rincian Produk"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="8dp"/>
-
-    <!-- Gambar Produk -->
-    <ImageView
-        android:id="@+id/productImageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:padding="8dp"
-        android:layout_marginTop="20dp"/>
-
-    <!-- Nama Produk -->
-    <TextView
-        android:id="@+id/productNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Nama Produk"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <!-- Harga Produk -->
-    <TextView
-        android:id="@+id/productPriceTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Rp 0"
-        android:textSize="16sp" />
-
-    <!-- Rate Produk -->
-    <TextView
-        android:id="@+id/productRateTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="4.6/5"
-        android:textSize="16sp" />
-
-    <!-- Toko Produk -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        >
-
-        <ImageView
-            android:id="@+id/imageToko"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/namaToko"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="nama"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <!-- Deskripsi Produk -->
-    <TextView
-        android:id="@+id/productDescriptionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:text="Deskripsi Produk"
-        android:textSize="14sp" />
-
-
-    <LinearLayout
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_above="@+id/btnAddToCart"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:orientation="horizontal">
-            <!-- Tombol Aksi -->
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <Button
-                android:id="@+id/btnAddToCart"
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/blue"
-                android:text="Tambah ke Keranjang" />
+                android:text="Rincian Produk"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="8dp" />
 
+            <!-- Gambar Produk -->
+            <ImageView
+                android:id="@+id/productImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:padding="8dp"
+                android:layout_marginTop="20dp" />
+
+            <!-- Nama Produk -->
+            <TextView
+                android:id="@+id/productNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Nama Produk"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Harga Produk -->
+            <TextView
+                android:id="@+id/productPriceTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Rp 0"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <!-- Rate Produk -->
+            <TextView
+                android:id="@+id/productRateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="4.6/5"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <!-- Toko Produk -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:id="@+id/imageToko"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/namaToko"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Toko"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Deskripsi Produk -->
+            <TextView
+                android:id="@+id/productDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:text="Deskripsi Produk"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
-</LinearLayout>
+    <!-- Fixed Button -->
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/blue"
+        android:text="Tambah ke Keranjang"
+        android:textColor="@color/white"
+        android:padding="16dp" />
+</RelativeLayout>

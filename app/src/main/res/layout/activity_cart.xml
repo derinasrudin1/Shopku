@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/white">
 
     <!-- Header -->
     <LinearLayout
@@ -20,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Keranjang"
+            android:textColor="@color/black"
             android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -80,18 +82,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="16dp"
-                android:contentDescription="Delete"
-                android:src="@drawable/ic_delete"
-                app:tint="@color/redTomato" />
+
 
             <Button
                 android:id="@+id/btnPay"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"

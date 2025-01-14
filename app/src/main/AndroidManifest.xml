@@ -39,6 +39,7 @@
             android:exported="false" />
         <activity android:name=".message.Pesan" />
         <activity android:name=".product.katpakaian.KatPakaian"/>
+        <activity android:name=".product.katmainan.KatMainan"/>
     </application>
 
 </manifest>

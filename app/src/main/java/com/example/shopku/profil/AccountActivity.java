@@ -56,7 +56,7 @@ public class AccountActivity extends AppCompatActivity {
                     Toast.makeText(this, "Undang Teman clicked", Toast.LENGTH_SHORT).show();
                     break;
                 case 6: // Keluar
-                    Toast.makeText(this, "Logout clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Anda telah Logout", Toast.LENGTH_SHORT).show();
                     // Handle logout logic here
                     logout();
 

@@ -15,6 +15,7 @@ import com.example.shopku.message.Pesan;
 import com.example.shopku.product.Product;
 import com.example.shopku.product.ProductAdapter;
 import com.example.shopku.product.ProductDetail;
+import com.example.shopku.product.katmainan.KatMainan;
 import com.example.shopku.product.katpakaian.KatPakaian;
 import com.example.shopku.profil.AccountActivity;
 
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView ivPesan,katPakaian;
+    ImageView ivPesan,katPakaian,katMainan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, KatPakaian.class);
             startActivity(intent);
         });
+
+        //Intent ke Kategori Permainan
+        katMainan = findViewById(R.id.imageView7);
+        katMainan.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, KatMainan.class);
+            startActivity(intent);
+        });
+
 
         // Intent untuk berpindah ke Pesan
         ivPesan = findViewById(R.id.ivPesan);

@@ -1,28 +1,40 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:padding="16dp">
 
-    <LinearLayout
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/scrollViewContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:orientation="vertical">
+        android:layout_above="@+id/btnAddOrder"
+        >
 
-        <!-- Section: Alamat Pengiriman -->
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pembayaran"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:layout_marginBottom="30dp" />
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <!-- Section: Alamat Pengiriman -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pembayaran"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:layout_marginBottom="30dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Alamat Pengiriman"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
@@ -50,12 +62,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rumah"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jl. Istana Merdeka no 78, Jakarta Pusat"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -78,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Metode Pembayaran"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
@@ -134,6 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="**** **** **** 2512"
+                android:textColor="@color/black"
                 android:layout_marginEnd="16dp" />
 
             <ImageView
@@ -143,17 +159,18 @@
                 android:contentDescription="Edit Icon" />
         </LinearLayout>
 
-        //Saldo
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Saldo"
+                android:textColor="@color/black"
                 android:layout_marginEnd="180dp"/>
 
             <TextView
@@ -162,6 +179,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="Rp 0"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -171,6 +189,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ringkasan Pemesanan"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
@@ -184,6 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sub-total"
+                android:textColor="@color/black"
                 android:layout_marginEnd="180dp"/>
 
             <TextView
@@ -192,6 +212,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="Rp 0"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
@@ -202,13 +223,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ongkos Kirim" />
+                android:text="Ongkos Kirim"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/ongkir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rp 0"
+                android:textColor="@color/black"
                 android:gravity="end"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -220,7 +243,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Voucher Diskon" />
+                android:text="Voucher Diskon"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/diskon"
@@ -228,6 +252,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="Rp 0"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
@@ -240,6 +265,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total"
+                android:textColor="@color/black"
                 android:layout_marginEnd="180dp"/>
 
             <TextView
@@ -248,41 +274,45 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="Rp 0"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-            <EditText
-               android:layout_width="wrap_content"
-               android:layout_height="40dp"
-               android:padding="10dp"
-               android:background="@drawable/edittext_backgroud"
-               android:hint="Masukan kode voucher"/>
-
-            <Button
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
                 android:padding="10dp"
-                android:layout_marginStart="2dp"
-                android:text="Tambah"
-                android:backgroundTint="@color/blue"/>
+                android:orientation="horizontal">
 
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:background="@drawable/edittext_backgroud"
+                    android:hint="Masukan kode voucher"
+                    android:textColor="@color/black" />
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginStart="2dp"
+                    android:text="Tambah"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/blue" />
+            </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnAddOrder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue"
-            android:text="Buat Pesanan"
-            android:layout_marginTop="60dp"/>
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+    <!-- Fixed Button at Bottom -->
+    <Button
+        android:id="@+id/btnAddOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/blue"
+        android:padding="16dp"
+        android:text="Buat Pesanan"
+        android:textColor="@color/white" />
+</RelativeLayout>
