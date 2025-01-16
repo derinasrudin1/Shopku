@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,8 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shopku.MainActivity;
-import com.example.shopku.ProfileActivity;
 import com.example.shopku.R;
 import com.example.shopku.payment.PaymentActivity;
 
@@ -33,6 +32,7 @@ public class CartActivity extends AppCompatActivity {
     private CheckBox checkboxAll;
     private TextView totalPrice, totalSavings;
     private Button btnPay;
+    private ImageView btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class CartActivity extends AppCompatActivity {
         totalPrice = findViewById(R.id.totalPrice);
         totalSavings = findViewById(R.id.totalSavings);
         btnPay = findViewById(R.id.btnPay);
+        btnDelete = findViewById(R.id.btnDelete); // Tombol Hapus
 
         // Initialize RecyclerView
         cartItemList = new ArrayList<>();
@@ -76,6 +77,10 @@ public class CartActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Button Delete
+        btnDelete.setOnClickListener(v -> {
+            deleteSelectedItems();
+        });
 
         // Initial calculation of total price
         updateTotalPrice(null);
@@ -128,8 +133,47 @@ public class CartActivity extends AppCompatActivity {
         checkboxAll.setChecked(allSelected);
     }
 
-    // Format currency to "Rp xxx.xxx" lah ya
+    // Format currency to "Rp xxx.xxx"
     private String formatCurrency(int amount) {
         return String.format("Rp %,d", amount).replace(',', '.');
+    }
+
+    // Delete selected items
+    private void deleteSelectedItems() {
+        List<CartItem> itemsToRemove = new ArrayList<>();
+        for (CartItem item : cartItemList) {
+            if (item.isSelected()) {
+                itemsToRemove.add(item);
+            }
+        }
+        if (!itemsToRemove.isEmpty()) {
+            cartItemList.removeAll(itemsToRemove);
+            cartAdapter.notifyDataSetChanged();
+            saveCartItems(); // Save updated cart to SharedPreferences
+            updateTotalPrice(null); // Recalculate total price
+            Toast.makeText(this, "Item berhasil dihapus", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Pilih item untuk dihapus", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Save updated cart to SharedPreferences
+    private void saveCartItems() {
+        SharedPreferences sharedPreferences = getSharedPreferences("CartPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        JSONArray cartArray = new JSONArray();
+        for (CartItem item : cartItemList) {
+            JSONObject product = new JSONObject();
+            try {
+                product.put("name", item.getName());
+                product.put("image", item.getImageResource());
+                product.put("price", formatCurrency(item.getPrice()));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            cartArray.put(product);
+        }
+        editor.putString("cart_items", cartArray.toString());
+        editor.apply();
     }
 }

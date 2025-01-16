@@ -1,6 +1,7 @@
 package com.example.shopku.cart;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shopku.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -57,6 +62,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             item.setQuantity(item.getQuantity() + 1);
             notifyItemChanged(position);
             notifyTotalPriceUpdate(item);
+            saveCartItems(); // Simpan perubahan ke SharedPreferences
         });
 
         // Decrease button listener
@@ -72,7 +78,30 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 notifyItemRangeChanged(position, cartItemList.size());
             }
             notifyTotalPriceUpdate(item);
+            saveCartItems();
         });
+
+    }
+
+    // Fungsi untuk menyimpan perubahan ke SharedPreferences
+    private void saveCartItems() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("CartPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        JSONArray cartArray = new JSONArray();
+        for (CartItem item : cartItemList) {
+            JSONObject product = new JSONObject();
+            try {
+                product.put("name", item.getName());
+                product.put("image", item.getImageResource());
+                product.put("price", formatCurrency(item.getPrice()));
+                product.put("quantity", item.getQuantity());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            cartArray.put(product);
+        }
+        editor.putString("cart_items", cartArray.toString());
+        editor.apply();
     }
 
     @Override

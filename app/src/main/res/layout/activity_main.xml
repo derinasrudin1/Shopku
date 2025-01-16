@@ -79,6 +79,7 @@
                 android:layout_height="38dp"
                 android:background="@drawable/edittext_backgroud"
                 android:ems="10"
+                android:textColorHint="@color/oldGrey"
                 android:hint="Cari Produk"
                 android:textColor="@color/black"
                 android:inputType="text"
