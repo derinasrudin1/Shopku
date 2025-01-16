@@ -5,17 +5,10 @@ Shopku adalah aplikasi belanja online yang memudahkan pengguna untuk menambahkan
 ---
 
 ## Screenshots
-<div style="display: flex; justify-content: space-around; align-items: center;">
-### Login
+<div style="display: flex; flex-direction: row; gap: 20px; flex-wrap: wrap;">
 <img src="Screenshot_Login.png" width="200"/>
-
-### Home
 <img src="Screenshot_Home.png" width="200"/>
-
-### List Produk
 <img src="Screenshot_Kategori_Olahraga.png" width="200"/>
-
-### Keranjang
 <img src="Screenshot_Keranjang.png" width="200"/>
 </div>
 
