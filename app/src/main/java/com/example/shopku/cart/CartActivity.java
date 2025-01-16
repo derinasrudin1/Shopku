@@ -68,7 +68,7 @@ public class CartActivity extends AppCompatActivity {
             // Ambil nilai total harga dari TextView
             String totalPriceValue = totalPrice.getText().toString();
 
-            // Buat Intent dan tambahkan data extra
+            // Intent dan data extra
             Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
             intent.putExtra("TOTAL_PRICE", totalPriceValue);
 
@@ -128,7 +128,7 @@ public class CartActivity extends AppCompatActivity {
         checkboxAll.setChecked(allSelected);
     }
 
-    // Format currency to "Rp xxx.xxx"
+    // Format currency to "Rp xxx.xxx" lah ya
     private String formatCurrency(int amount) {
         return String.format("Rp %,d", amount).replace(',', '.');
     }

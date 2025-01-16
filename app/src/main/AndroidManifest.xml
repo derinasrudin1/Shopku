@@ -40,6 +40,8 @@
         <activity android:name=".message.Pesan" />
         <activity android:name=".product.katpakaian.KatPakaian"/>
         <activity android:name=".product.katmainan.KatMainan"/>
+        <activity android:name=".product.katolahraga.KatOlahraga"/>
+        <activity android:name=".product.katrumah.KatRumah"/>
     </application>
 
 </manifest>

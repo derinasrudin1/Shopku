@@ -30,8 +30,6 @@
     </LinearLayout>
 
     <!-- RecyclerView -->
-
-    <!-- Bottom Layout -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCart"
         android:layout_width="match_parent"
@@ -40,6 +38,8 @@
         android:padding="10dp"
         android:overScrollMode="never" />
 
+
+    <!-- Bottom Layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Semua" />
+            android:text="Semua"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

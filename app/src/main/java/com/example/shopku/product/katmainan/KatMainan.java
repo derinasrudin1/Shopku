@@ -141,11 +141,6 @@ public class KatMainan extends AppCompatActivity {
                 "⭐4.1/5.0",
                 R.drawable.picisku,
                 "isku.official",
-"Tentu, saya bantu buatkan beberapa contoh deskripsi untuk produk boneka beruang yang bisa kamu gunakan untuk keperluan dummy:\n" +
-        "\n" +
-        "Contoh Deskripsi Umum\n" +
-        "Boneka Beruang Peluk yang Lembut dan Menggemaskan\n" +
-        "\n" +
         "Temukan sahabat terbaikmu dalam bentuk boneka beruang yang super lembut ini! Dengan bulu yang halus dan isian yang empuk, boneka beruang ini akan membuatmu merasa nyaman dan aman setiap saat. Cocok untuk dipeluk saat tidur, dijadikan teman bermain, atau sebagai hadiah istimewa untuk orang tersayang.\n" +
         "\n" +
         "Bahan: Bulu halus dan lembut, isian dakron berkualitas\n" +

@@ -3,6 +3,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,7 @@ public class PaymentActivity extends AppCompatActivity {
     private TextView tvSaldo; // TextView untuk saldo
     private int saldoDebit = 100000; // Contoh saldo Debit
     private int saldoApplePay = 50000; // Contoh saldo Apple Pay
-    private String selectedPaymentMethod = ""; // Variabel untuk metode pembayaran yang dipilih
+    private String selectedPaymentMethod = "";
 
 
     @Override
@@ -84,6 +85,7 @@ public class PaymentActivity extends AppCompatActivity {
                     break;
                 case "COD":
                     tvSaldo.setText("Bayar di Tempat");
+
                     break;
                 default:
                     tvSaldo.setText(""); // Kosongkan jika metode lain

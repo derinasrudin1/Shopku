@@ -16,12 +16,10 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
     private List<MessageInbox> messageList;
 
-    // Constructor
     public MessageAdapter(List<MessageInbox> messageList) {
         this.messageList = messageList;
     }
 
-    // ViewHolder Class
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
         TextView tvSenderName, tvMessageContent,tvMessageDate;
         ImageView imageSender;
